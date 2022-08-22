@@ -8,3 +8,15 @@
     top: 30px;
     left: 50%;
 }
+.canos{
+    width: 50px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+}
+.mario{
+    width: 70px;
+    position: absolute;
+    bottom: 0px;
+    left: 10%;
+}
