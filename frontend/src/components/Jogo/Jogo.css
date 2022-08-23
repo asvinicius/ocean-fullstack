@@ -15,7 +15,13 @@
     left: 50%;
 }
 .mario{
-    width: 70px;
+    width: 80px;
+    position: absolute;
+    bottom: 0px;
+    left: 10%;
+}
+.gameover{
+    width: 80px;
     position: absolute;
     bottom: 0px;
     left: 10%;
