@@ -1,25 +1,52 @@
 .jogo{
     background: #9BE5E4;
     height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 .nuvens{
     width: 200px;
     position: absolute;
     top: 30px;
-    left: 50%;
+    animation: nuvem-rtol 8s infinite linear;
 }
+
+@keyframes nuvem-rtol {
+    from{right: -200px;}
+    to{right: 100%;}
+}
+
 .canos{
     width: 50px;
     position: absolute;
     bottom: 30px;
     right: 50px;
+
+    animation: mov-rtol 3s infinite linear;
 }
+
+@keyframes mov-rtol {
+    from{right: -50px;}
+    to{right: 100%;}
+}
+
 .mario{
     height: 80px;
     position: absolute;
     bottom: 30px;
     left: 50px;
 }
+
+.mario-pulo{
+    animation: mario-pulo 1.5s;
+}
+
+@keyframes mario-pulo {
+    from{bottom: 30px;}
+    50%{bottom: 150px;}
+    to{bottom: 30px;}
+}
+
 .gameover{
     width: 80px;
     position: absolute;
