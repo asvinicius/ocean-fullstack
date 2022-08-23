@@ -11,18 +11,25 @@
 .canos{
     width: 50px;
     position: absolute;
-    bottom: 0px;
-    left: 50%;
+    bottom: 30px;
+    right: 50px;
 }
 .mario{
-    width: 80px;
+    height: 80px;
     position: absolute;
-    bottom: 0px;
-    left: 10%;
+    bottom: 30px;
+    left: 50px;
 }
 .gameover{
     width: 80px;
     position: absolute;
-    bottom: 0px;
+    bottom: 30px;
     left: 10%;
+}
+.chao{
+    background: lightgreen;
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    bottom: 0px;
 }
