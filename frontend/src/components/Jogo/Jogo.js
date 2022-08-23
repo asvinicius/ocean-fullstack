@@ -3,11 +3,34 @@ import clouds from "../../assets/clouds.png";
 import pipe from "../../assets/pipe.png";
 import gameover from "../../assets/game-over.png";
 import mario from "../../assets/mario.gif";
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 function Jogo() {
 
     const [jumping, setJumping] = useState(false);
+
+    const marioRef = useRef();
+    const canoRef = useRef();
+
+    function isFoul(){
+        const mario = marioRef.current;
+        const cano = canoRef.current;
+
+        if(!mario || !cano){
+            return;
+        }
+
+        return(
+            cano.offsetLeft > mario.offsetLeft &&
+            cano.offsetLeft < mario.offsetLeft + mario.offsetWidth &&
+            mario.offsetTop + mario.offsetHeight > cano.offsetTop
+        );
+    }
+
+    setInterval(function(){
+        const valor = isFoul();
+        console.log(valor)
+    }, 100);
 
     document.onkeydown = function(){
         setJumping(true);
@@ -24,8 +47,8 @@ function Jogo() {
 
     return <div className="jogo">
         <img className="nuvens" src={clouds} alt="Nuvens" />
-        <img className="canos" src={pipe} alt="Canos" />
-        <img className={marioClassName} src={mario} alt="Mário" />
+        <img ref={canoRef} className="canos" src={pipe} alt="Canos" />
+        <img ref={marioRef} className={marioClassName} src={mario} alt="Mário" />
         <div className="chao"></div>
     </div>
 }
