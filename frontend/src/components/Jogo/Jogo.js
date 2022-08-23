@@ -10,14 +10,22 @@ function Jogo() {
     const [jumping, setJumping] = useState(false);
 
     document.onkeydown = function(){
-        console.log("On Key Down");
-        jumping = true;
+        setJumping(true);
+        setTimeout(function(){setJumping(false)}, 1500)
     }
+
+    let marioClassName = "mario";
+
+    if(jumping){
+        marioClassName = "mario mario-pulo";
+    }
+
+    console.log({jumping});
 
     return <div className="jogo">
         <img className="nuvens" src={clouds} alt="Nuvens" />
         <img className="canos" src={pipe} alt="Canos" />
-        <img className="mario" src={mario} alt="Mário" />
+        <img className={marioClassName} src={mario} alt="Mário" />
         <div className="chao"></div>
     </div>
 }
