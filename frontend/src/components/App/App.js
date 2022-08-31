@@ -4,10 +4,10 @@ import Jogo from '../Jogo/Jogo';
 import './App.css';
 
 function App() {
-  const [gameOver, seGameOver] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
   function onDie(){
-    console.log("App -> onDie");
+    setGameOver(true);
   }
 
   return (

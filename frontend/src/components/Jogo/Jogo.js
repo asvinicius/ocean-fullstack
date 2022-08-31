@@ -29,30 +29,37 @@ function Jogo(props) {
         );
     }
 
-    setInterval(function(){
-        const valor = isFoul();
+    useEffect(
+        function(){
+            setInterval(function(){
+                const valor = isFoul();
+        
+                if(!valor || isDead){
+                    return;
+                }
+        
+                //console.log("Game Over? ",valor)
+                setIsDead(true);
+                props.onDie();
+            }, 100);
+        }, 
+        [isDead]
 
-        if(!valor){
-            return;
-        }
-
-        //console.log("Game Over? ",valor)
-        setIsDead(true);
-        props.onDie();
-    }, 100);
+    );
 
     //console.log({isDead});
 
-    useEffect(function(){
-        const interval = setInterval(function(){
-            if(isDead) {
-                return;
-            }
-    
-            setPontos(pontos+1);
-            //console.log({pontos});
-        }, 500);
-        return() => clearInterval(interval);
+    useEffect(
+        function(){
+            const interval = setInterval(function(){
+                if(isDead) {
+                    return;
+                }
+        
+                setPontos(pontos+1);
+                //console.log({pontos});
+            }, 500);
+            return() => clearInterval(interval);
         },
         [isDead, pontos]
     );
