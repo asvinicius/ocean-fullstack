@@ -3,7 +3,7 @@ import clouds from "../../assets/clouds.png";
 import pipe from "../../assets/pipe.png";
 import gameover from "../../assets/game-over.png";
 import mario from "../../assets/mario.gif";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 function Jogo() {
 
@@ -42,18 +42,24 @@ function Jogo() {
 
     //console.log({isDead});
 
-    setInterval(function(){
-        if(isDead) {
-            return;
-        }
-
-        setPontos(pontos+1);
-        console.log({pontos});
-    }, 500)
+    useEffect(function(){
+        const interval = setInterval(function(){
+            if(isDead) {
+                return;
+            }
+    
+            setPontos(pontos+1);
+            console.log({pontos});
+        }, 500);
+        return() => clearInterval(interval);
+        },
+        [isDead, pontos]
+    );
+    
 
     document.onkeydown = function(){
         setJumping(true);
-        setTimeout(function(){setJumping(false)}, 1500)
+        setTimeout(function(){setJumping(false)}, 1500);
     }
 
     let marioClassName = "mario";
