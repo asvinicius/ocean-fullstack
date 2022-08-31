@@ -64,3 +64,8 @@
     width: 100%;
     bottom: 0px;
 }
+.mostraPontos{
+    position: absolute;
+    top: 5px;
+    left: 30px;
+}

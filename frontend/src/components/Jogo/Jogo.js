@@ -78,6 +78,7 @@ function Jogo() {
         <img ref={canoRef} className={"canos " + pararAnimacao} src={pipe} alt="Canos" />
         <img ref={marioRef} className={marioClassName} src={marioImage} alt="Mário" />
         <div className="chao"></div>
+        <label className="mostraPontos">{pontos}</label>
     </div>
 }
 
