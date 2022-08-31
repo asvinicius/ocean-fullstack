@@ -9,6 +9,7 @@ function Jogo() {
 
     const [jumping, setJumping] = useState(false);
     const [isDead, setIsDead] = useState(false);
+    const [pontos, setPontos] = useState(0);
 
     const marioRef = useRef();
     const canoRef = useRef();
@@ -39,7 +40,16 @@ function Jogo() {
         setIsDead(true);
     }, 100);
 
-    console.log({isDead});
+    //console.log({isDead});
+
+    setInterval(function(){
+        if(isDead) {
+            return;
+        }
+
+        setPontos(pontos+1);
+        console.log({pontos});
+    }, 500)
 
     document.onkeydown = function(){
         setJumping(true);
@@ -52,7 +62,7 @@ function Jogo() {
         marioClassName = "mario mario-pulo";
     }
 
-    console.log({jumping});
+    //console.log({jumping});
 
     const marioImage = isDead ? gameover : mario;
     const pararAnimacao = isDead ? "stop-animation" : "";
