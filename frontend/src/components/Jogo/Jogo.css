@@ -25,6 +25,10 @@
     animation: mov-rtol 3s infinite linear;
 }
 
+.stop-animation{
+    animation-play-state: paused;
+}
+
 @keyframes mov-rtol {
     from{right: -50px;}
     to{right: 100%;}

@@ -55,10 +55,11 @@ function Jogo() {
     console.log({jumping});
 
     const marioImage = isDead ? gameover : mario;
+    const pararAnimacao = isDead ? "stop-animation" : "";
 
     return <div className="jogo">
         <img className="nuvens" src={clouds} alt="Nuvens" />
-        <img ref={canoRef} className="canos" src={pipe} alt="Canos" />
+        <img ref={canoRef} className={"canos " + pararAnimacao} src={pipe} alt="Canos" />
         <img ref={marioRef} className={marioClassName} src={marioImage} alt="Mário" />
         <div className="chao"></div>
     </div>
