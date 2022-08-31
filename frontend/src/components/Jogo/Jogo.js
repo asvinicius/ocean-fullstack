@@ -5,7 +5,7 @@ import gameover from "../../assets/game-over.png";
 import mario from "../../assets/mario.gif";
 import {useEffect, useRef, useState} from "react";
 
-function Jogo() {
+function Jogo(props) {
 
     const [jumping, setJumping] = useState(false);
     const [isDead, setIsDead] = useState(false);
@@ -38,6 +38,7 @@ function Jogo() {
 
         //console.log("Game Over? ",valor)
         setIsDead(true);
+        props.onDie();
     }, 100);
 
     //console.log({isDead});
@@ -49,7 +50,7 @@ function Jogo() {
             }
     
             setPontos(pontos+1);
-            console.log({pontos});
+            //console.log({pontos});
         }, 500);
         return() => clearInterval(interval);
         },
