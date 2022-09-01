@@ -1,16 +1,41 @@
+import { useEffect, useState } from "react";
 import "./HighScore.css";
 
 function HighScore(props){
 
-    fetch("http://localhost:3333/pontuacoes").then(console.log);
+    const [itens, setItens] = useState(undefined);
+
+    useEffect(function(){
+
+        async function carregarPontuacoes(){
+            const response = await fetch("http://localhost:3333/pontuacoes", {mode:'no-cors'});
+            const body = await response.json();    
+            setItens(body);
+        }
+
+        carregarPontuacoes();
+    }, []);
+
+    console.log(itens);
+
+    const itensCarregando = itens === undefined;
 
     return (
         <div className="HighScore">
             <div>Você fez <strong>{props.pontos}</strong> pontos.</div>
             <h2>Game Over</h2>
-            <div>Paul - 90 pontos</div>
-            <div>Ana - 82 pontos</div>
-            <div>João - 77 pontos</div>
+
+            {itensCarregando ? (
+                <div>Carregando...</div>
+            ) : (
+                <div>
+                    {itens.map((item) => (
+                        <div key={`score_${index}`}>{item.nome} - {item.pontos} pontos</div>
+                    ))}
+                </div>
+            )}
+
+            
             <div>
                 <h4>Informe seu nome</h4>
                 <form>
