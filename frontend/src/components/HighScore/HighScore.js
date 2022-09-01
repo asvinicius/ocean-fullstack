@@ -29,7 +29,7 @@ function HighScore(props){
                 <div>Carregando...</div>
             ) : (
                 <div>
-                    {itens.map((item) => (
+                    {itens.map((item, index) => (
                         <div key={`score_${index}`}>{item.nome} - {item.pontos} pontos</div>
                     ))}
                 </div>
@@ -44,7 +44,7 @@ function HighScore(props){
                 </form>
             </div>
         </div>
-    )
+    );
 }
 
 export default HighScore;
