@@ -31,19 +31,19 @@ function Jogo(props) {
 
     useEffect(
         function(){
-            setInterval(function(){
+            const interval = setInterval(function(){
                 const valor = isFoul();
         
                 if(!valor || isDead){
                     return;
                 }
         
-                //console.log("Game Over? ",valor)
                 setIsDead(true);
                 props.onDie();
             }, 100);
+            return() => clearInterval(interval);
         }, 
-        [isDead]
+        [isDead, pontos, props]
 
     );
 
@@ -58,10 +58,11 @@ function Jogo(props) {
         
                 setPontos(pontos+1);
                 //console.log({pontos});
+                props.onPontos(pontos + 1);
             }, 500);
             return() => clearInterval(interval);
         },
-        [isDead, pontos]
+        [isDead, pontos, props]
     );
     
 
